@@ -1,5 +1,6 @@
 package com.automationpractice.pages;
 
+import com.automationpractice.core.BasePage;
 import com.automationpractice.utils.RandomDataGenerator;
 import org.openqa.selenium.By;
 
@@ -59,7 +60,6 @@ public class CreateAccountPage extends BasePage {
                 .setPassword(random.newPassword(5, 15))
                 .setAddressInformation(getRandomState(), random.newWord(), random.newWord(), random.newNumber(5))
                 .setPhone(random.newPhone(10));
-
     }
 
     public AccountPage createAccountWithRandomInformation() {

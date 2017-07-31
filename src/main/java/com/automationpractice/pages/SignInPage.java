@@ -1,5 +1,6 @@
 package com.automationpractice.pages;
 
+import com.automationpractice.core.BasePage;
 import com.automationpractice.utils.RandomDataGenerator;
 import org.openqa.selenium.By;
 

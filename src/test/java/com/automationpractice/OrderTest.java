@@ -1,11 +1,12 @@
 package com.automationpractice;
 
+import com.automationpractice.core.BaseTest;
 import com.automationpractice.pages.ConfirmOrderPage;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 import io.qameta.allure.Step;
 
-import static com.automationpractice.pages.BasePage.goToHomePage;
+import static com.automationpractice.core.BasePage.goToHomePage;
 
 public class OrderTest extends BaseTest {
 
@@ -40,7 +41,7 @@ public class OrderTest extends BaseTest {
     @Step("Proceed to checkout, select the 'Bank Wire' payment option and confirm")
     public ConfirmOrderPage proceedWithBankWirePaymentAndConfirm() {
         return goToHomePage()
-                .goToOrderSummaryPage()
+                .goToShoppingCartSummaryPage()
                 .proceedAndGoToAddressPage()
                 .proceedAndGoToShippingPage()
                 .proceedAndGoToPaymentMethodPage()

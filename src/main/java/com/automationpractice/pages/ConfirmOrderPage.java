@@ -1,5 +1,6 @@
 package com.automationpractice.pages;
 
+import com.automationpractice.core.BasePage;
 import org.openqa.selenium.By;
 
 import java.util.regex.Matcher;

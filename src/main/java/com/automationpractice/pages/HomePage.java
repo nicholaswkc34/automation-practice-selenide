@@ -1,11 +1,13 @@
 package com.automationpractice.pages;
 
-import com.codeborne.selenide.Condition;
+import com.automationpractice.core.BasePage;
 import org.openqa.selenium.By;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.codeborne.selenide.Condition.appear;
+import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static com.automationpractice.utils.LocatorRepository.getLocator;
@@ -46,7 +48,7 @@ public class HomePage extends BasePage {
     }
 
     public HomePage shouldHaveInSearchResults(String name) {
-        $$(SEARCH_RESULT_PRODUCT_NAME).findBy(text(name)).shouldBe(Condition.exist);
+        $$(SEARCH_RESULT_PRODUCT_NAME).findBy(text(name)).shouldBe(exist);
         return this;
     }
 
@@ -56,22 +58,22 @@ public class HomePage extends BasePage {
         int productId;
 
         search(query);
-        $(SEARCH_RESULT_PRODUCT_NAME).shouldBe(Condition.exist);
+        $(SEARCH_RESULT_PRODUCT_NAME).shouldBe(exist);
         url = $(SEARCH_RESULT_PRODUCT_NAME).getAttribute("href");
         productId = Integer.parseInt(getIdFromURL(url));
         $(SEARCH_RESULT_PRODUCT_NAME).hover();
-        $(ADD_PRODUCT_TO_CART_BUTTON).shouldBe(Condition.appear).click();
-        $(CART_LAYER).shouldBe(Condition.appear);
+        $(ADD_PRODUCT_TO_CART_BUTTON).shouldBe(appear).click();
+        $(CART_LAYER).shouldBe(appear);
 
         return productId;
     }
 
-    public OrderSummaryPage goToOrderSummaryPage() {
+    public ShoppingCartSummaryPage goToShoppingCartSummaryPage() {
         if ($(CART_LAYER).exists())
             $(CART_LAYER_PROCEED_BUTTON).click();
         else
             $(SHOPPING_CART_LINK).click();
-        return page(OrderSummaryPage.class);
+        return page(ShoppingCartSummaryPage.class);
     }
 
     public AccountPage goToAccountPage() {
@@ -81,12 +83,12 @@ public class HomePage extends BasePage {
 
     public HomePage openTShirtsCategory() {
         $(CATEGORY_WOMAN_LINK).hover();
-        $(CATEGORY_T_SHIRTS_LINK).shouldBe(Condition.appear).click();
+        $(CATEGORY_T_SHIRTS_LINK).shouldBe(appear).click();
         return page(HomePage.class);
     }
 
     public HomePage shouldHaveInCategoryResults(String name) {
-        $$(CATEGORY_RESULT_PRODUCT_NAME).findBy(text(name)).shouldBe(Condition.exist);
+        $$(CATEGORY_RESULT_PRODUCT_NAME).findBy(text(name)).shouldBe(exist);
         return this;
     }
 

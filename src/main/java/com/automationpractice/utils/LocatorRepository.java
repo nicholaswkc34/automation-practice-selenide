@@ -2,20 +2,23 @@ package com.automationpractice.utils;
 
 import org.openqa.selenium.By;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class LocatorRepository {
 
     private static Properties locators;
+    private static final String PROPERTIES_FILE_PATH = "/locators.properties";
 
     static {
         locators = new Properties();
-        InputStream is = LocatorRepository.class.getResourceAsStream("/locators.properties");
+        InputStream is = LocatorRepository.class.getResourceAsStream(PROPERTIES_FILE_PATH);
         try {
             locators.load(is);
-        } catch (Exception e) {
-            System.out.println("Error in loading the properties file: " + e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException("The locators properties file cannot be read from '"
+                    + PROPERTIES_FILE_PATH + "'. Caused by:" + e.getMessage());
         }
     }
 

@@ -1,5 +1,6 @@
-package com.automationpractice.pages;
+package com.automationpractice.core;
 
+import com.automationpractice.pages.HomePage;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -8,7 +9,7 @@ import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.title;
 import static com.automationpractice.utils.LocatorRepository.getLocator;
 
-public class BasePage {
+public abstract class BasePage {
     private final static By HOME_BUTTON = getLocator("BasePage.HomeButton");
     private final static By HOME_PAGE_ID = getLocator("HomePage.id");
 

@@ -1,4 +1,4 @@
-package com.automationpractice;
+package com.automationpractice.core;
 
 import com.codeborne.selenide.Configuration;
 import org.testng.annotations.AfterMethod;
@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class BaseTest {
+public abstract class BaseTest {
 
     //TODO Add parametrization for browsers and Selenium Grid
     @BeforeClass

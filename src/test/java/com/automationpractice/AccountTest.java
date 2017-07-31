@@ -1,9 +1,10 @@
 package com.automationpractice;
 
+import com.automationpractice.core.BaseTest;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
-import static com.automationpractice.pages.BasePage.goToHomePage;
+import static com.automationpractice.core.BasePage.goToHomePage;
 
 public class AccountTest extends BaseTest {
     private final String MY_ACCOUNT_TITLE = "My account - My Store"; //TODO Replace with page_id checking

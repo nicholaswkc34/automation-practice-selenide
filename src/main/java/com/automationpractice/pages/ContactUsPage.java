@@ -1,10 +1,10 @@
 package com.automationpractice.pages;
 
-import com.codeborne.selenide.Condition;
+import com.automationpractice.core.BasePage;
 import org.openqa.selenium.By;
 
-import java.io.File;
-
+import static com.codeborne.selenide.Condition.appear;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 import static com.automationpractice.utils.LocatorRepository.getLocator;
@@ -32,10 +32,10 @@ public class ContactUsPage extends BasePage {
     }
 
     public void shouldHaveErrorMessage(String message) {
-        $(ERROR_MESSAGE_ALERT).shouldHave(Condition.text(message));
+        $(ERROR_MESSAGE_ALERT).shouldHave(text(message));
     }
 
     public void shouldHaveSuccessMessage() {
-        $(SUCCESS_MESSAGE_ALERT).shouldHave(Condition.appear);
+        $(SUCCESS_MESSAGE_ALERT).shouldBe(appear);
     }
 }
