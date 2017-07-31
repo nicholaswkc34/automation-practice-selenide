@@ -11,6 +11,8 @@
     <url>http://maven.apache.org</url>
 
     <properties>
+        <path.chrome>drivers\chromedriver.exe</path.chrome>
+        <path.firefox>drivers\geckodriver.exe</path.firefox>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -20,6 +22,24 @@
         <allure.version>1.4.16</allure.version>
         <aspectj.version>1.8.10</aspectj.version>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>firefox</id>
+            <properties>
+                <browser>firefox</browser>
+            </properties>
+        </profile>
+        <profile>
+            <id>chrome</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <browser>chrome</browser>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
@@ -47,6 +67,7 @@
     </dependencies>
 
     <build>
+        <defaultGoal>clean test</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -54,8 +75,12 @@
                 <version>2.20</version>
                 <configuration>
                     <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                        -Dbrowser=${browser} -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
+                    <systemPropertyVariables>
+                        <webdriver.chrome.driver>${path.chrome}</webdriver.chrome.driver>
+                        <webdriver.gecko.driver>${path.firefox}</webdriver.gecko.driver>
+                    </systemPropertyVariables>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -74,7 +99,7 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.9</version>
+                <version>2.8</version>
             </plugin>
         </plugins>
     </reporting>

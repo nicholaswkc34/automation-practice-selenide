@@ -29,7 +29,7 @@ public class OrderTest extends BaseTest {
         checkOrderInOrderHistory(orderReference);
     }
 
-    @Step("Try to login with '{0}' email amd '{1}' password")
+    @Step("Try to login with the {email} email and {password} password")
     private void tryLogin(String email, String password) {
         SignInPage signInPage = goToHomePage().goToSignInPage();
         if (!signInPage.tryLogin(email, password)) {
@@ -37,13 +37,13 @@ public class OrderTest extends BaseTest {
         }
     }
 
-    @Step("Create a new account: {1} : {2}")
+    @Step("Create a new account: {email} : {password}")
     private void createNewAccount(SignInPage signInPage, String email, String password) {
         signInPage.startAccountCreation(email)
                 .createAccountWithRandomInformation(password);
     }
 
-    @Step("Add the first of '{0}' from the search results to the shopping cart")
+    @Step("Add the first of {product} from the search results to the shopping cart")
     private void addToCartFirstOf(String product) {
         goToHomePage().addToCartFirstOf(product);
     }
@@ -59,7 +59,7 @@ public class OrderTest extends BaseTest {
                 .confirmOrder();
     }
 
-    @Step("Check the '{0}' order reference in the order history")
+    @Step("Check the {orderReference} order reference in the order history")
     private void checkOrderInOrderHistory(String orderReference) {
         goToHomePage()
                 .goToAccountPage()

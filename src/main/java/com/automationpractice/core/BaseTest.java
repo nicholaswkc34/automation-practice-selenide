@@ -10,12 +10,10 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTest {
 
-    //TODO Add parametrization for browsers and Selenium Grid
+    //TODO Add parametrization for Selenium Grid
     @BeforeClass
     protected void setConfiguration() {
-        System.setProperty("webdriver.chrome.driver", "E:/Soft/chromedriver.exe");
         Configuration.timeout = 10000;
-        Configuration.browser = "chrome";
         Configuration.baseUrl = "http://automationpractice.com/index.php";
     }
 
