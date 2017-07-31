@@ -3,9 +3,9 @@ Demo repository for automated testing of a demo e-commerce website: http://autom
 #### Java + Maven + TestNG + Selenide + Allure
 
 Default maven goal: `clean test`.
-Default browser is _Google Chrome_.
+Default browser is Google Chrome.
 
-For testing with _Mozilla Firefox_ the `firefox` command line parameter can be used:
+For testing with Mozilla Firefox the `firefox` command line parameter can be used:
 ```bash
 mvn test -firefox
 ```
