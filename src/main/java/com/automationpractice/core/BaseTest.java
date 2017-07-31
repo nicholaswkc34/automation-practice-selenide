@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public abstract class BaseTest {
+public class BaseTest {
 
     //TODO Add parametrization for browsers and Selenium Grid
     @BeforeClass

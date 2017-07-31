@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class RandomDataGenerator {
 
-    private String[] syllables = {"the","ren","ina","ona","co","he","be","rea","ha","wa","fo","whe","ma","wi","mark",
+    private final String[] syllables = {"the","ren","ina","ona","co","he","be","rea","ha","wa","fo","whe","ma","wi","mark",
             "john","stay","sill","of", "di","al","ar","li","wo","fry","pa","me","at","su","bu","ta","da","ab","ti","ro",
             "mu","ea","na","sca","ad","ge","bye","afa","aga","up","my","ob","ke","ef","ph","ci","ki","ni","ty"};
 
@@ -14,7 +14,7 @@ public class RandomDataGenerator {
         return RandomStringUtils.randomAlphanumeric(minLength, maxLength);
     }
 
-    public String newWord(int syllablesCount) {
+    private String newWord(int syllablesCount) {
         StringBuilder word = new StringBuilder();
 
         for(int i = 0; i < syllablesCount; i++) {
@@ -46,7 +46,7 @@ public class RandomDataGenerator {
         return RandomStringUtils.randomNumeric(digitCount);
     }
 
-    public String newNumber() {
+    private String newNumber() {
         Random random = new Random();
         int digitCount = random.nextInt(8) + 1;
 

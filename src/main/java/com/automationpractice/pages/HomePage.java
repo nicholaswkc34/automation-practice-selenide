@@ -47,11 +47,6 @@ public class HomePage extends BasePage {
         return page(HomePage.class);
     }
 
-    public HomePage shouldHaveInSearchResults(String name) {
-        $$(SEARCH_RESULT_PRODUCT_NAME).findBy(text(name)).shouldBe(exist);
-        return this;
-    }
-
     // Returns the id of the product that was added to the cart.
     public int addToCartFirstOf(String query) {
         String url;
@@ -87,9 +82,12 @@ public class HomePage extends BasePage {
         return page(HomePage.class);
     }
 
-    public HomePage shouldHaveInCategoryResults(String name) {
+    public void shouldHaveInCategoryResults(String name) {
         $$(CATEGORY_RESULT_PRODUCT_NAME).findBy(text(name)).shouldBe(exist);
-        return this;
+    }
+
+    public void shouldHaveInSearchResults(String name) {
+        $$(SEARCH_RESULT_PRODUCT_NAME).findBy(text(name)).shouldBe(exist);
     }
 
     public HomePage shouldHaveCategoryResultsSize(int size) {
@@ -97,10 +95,21 @@ public class HomePage extends BasePage {
         return this;
     }
 
+    public HomePage shouldHaveSearchResultsSize(int size) {
+        $$(SEARCH_RESULT_PRODUCT_NAME).shouldHaveSize(size);
+        return this;
+    }
+
     private String getIdFromURL(String url) {
-        Pattern idPattern = Pattern.compile("(?<=[&\\?]id_product=)\\d*");
+        String idRegex = "(?<=[&\\?]id_product=)\\d*";
+        Pattern idPattern = Pattern.compile(idRegex);
         Matcher matcher = idPattern.matcher(url);
 
-        return matcher.find() ? matcher.group() : null;
+        if (!matcher.find()) {
+            throw new IllegalStateException("Cannot get the id parameter from the '" + url
+                    + "' URL using regex: '" + idRegex);
+        }
+
+        return matcher.group();
     }
 }

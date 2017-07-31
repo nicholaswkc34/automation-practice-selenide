@@ -8,7 +8,7 @@ import java.util.Properties;
 
 public class LocatorRepository {
 
-    private static Properties locators;
+    private static final Properties locators;
     private static final String PROPERTIES_FILE_PATH = "/locators.properties";
 
     static {
@@ -33,7 +33,7 @@ public class LocatorRepository {
         return parseLocatorProperty(propertyValue);
     }
 
-    protected static By parseLocatorProperty(String propertyValue) {
+    private static By parseLocatorProperty(String propertyValue) {
         String [] locatorParts = propertyValue.split(":", 2);
         String locatorType = locatorParts[0].trim();
         String locatorValue = locatorParts[1].trim();

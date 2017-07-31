@@ -21,18 +21,18 @@ public class CreateAccountPage extends BasePage {
     private final By PHONE_INPUT = getLocator("CreateAccount.PhoneInput");
     private final By REGISTER_BUTTON = getLocator("CreateAccount.RegisterButton");
 
-    public CreateAccountPage setPersonalInformation(String firstName, String lastName) {
+    private CreateAccountPage setPersonalInformation(String firstName, String lastName) {
         $(FIRST_NAME_INPUT).val(firstName);
         $(LAST_NAME_INPUT).val(lastName);
         return this;
     }
 
-    public CreateAccountPage setPassword(String password) {
+    private CreateAccountPage setPassword(String password) {
         $(PASSWORD_INPUT).val(password);
         return this;
     }
 
-    public CreateAccountPage setAddressInformation(String state, String city, String address, String postcode) {
+    private CreateAccountPage setAddressInformation(String state, String city, String address, String postcode) {
         $(STATE_SELECT).selectOptionByValue(state);
         $(ADDRESS_INPUT).val(address);
         $(CITY_INPUT).val(city);
@@ -40,12 +40,12 @@ public class CreateAccountPage extends BasePage {
         return this;
     }
 
-    public CreateAccountPage setPhone(String phone) {
+    private CreateAccountPage setPhone(String phone) {
         $(PHONE_INPUT).val(phone);
         return this;
     }
 
-    public String getRandomState() {
+    private String getRandomState() {
         Random random = new Random();
         int stateCount = $(STATE_SELECT).$$(By.tagName("option")).size();
         int randomIndex = random.nextInt(stateCount);
@@ -53,7 +53,7 @@ public class CreateAccountPage extends BasePage {
         return $(STATE_SELECT).$$(By.tagName("option")).get(randomIndex).val();
     }
 
-    public CreateAccountPage setRandomAccountInformation(String password) {
+    private CreateAccountPage setRandomAccountInformation(String password) {
         RandomDataGenerator random = new RandomDataGenerator();
 
         return this.setPersonalInformation(random.newWord(), random.newWord())
@@ -62,7 +62,7 @@ public class CreateAccountPage extends BasePage {
                 .setPhone(random.newPhone(10));
     }
 
-    public CreateAccountPage setRandomAccountInformation() {
+    private CreateAccountPage setRandomAccountInformation() {
         RandomDataGenerator random = new RandomDataGenerator();
 
         return setRandomAccountInformation(random.newPassword(5, 15));

@@ -2,11 +2,9 @@ package com.automationpractice.core;
 
 import com.automationpractice.pages.HomePage;
 import org.openqa.selenium.By;
-import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.Selenide.title;
 import static com.automationpractice.utils.LocatorRepository.getLocator;
 
 public abstract class BasePage {
@@ -17,9 +15,5 @@ public abstract class BasePage {
         if (!$(HOME_PAGE_ID).exists())
             $(HOME_BUTTON).click();
         return page(HomePage.class);
-    }
-
-    public void shouldHaveTitle(String title) {
-        Assert.assertEquals(title, title()); //TODO Remove Asserts
     }
 }

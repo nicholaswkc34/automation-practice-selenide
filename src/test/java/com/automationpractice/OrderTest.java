@@ -30,7 +30,7 @@ public class OrderTest extends BaseTest {
     }
 
     @Step("Try to login with '{0}' email amd '{1}' password")
-    public void tryLogin(String email, String password) {
+    private void tryLogin(String email, String password) {
         SignInPage signInPage = goToHomePage().goToSignInPage();
         if (!signInPage.tryLogin(email, password)) {
             createNewAccount(signInPage, email, password);
@@ -38,18 +38,18 @@ public class OrderTest extends BaseTest {
     }
 
     @Step("Create a new account: {1} : {2}")
-    public void createNewAccount(SignInPage signInPage, String email, String password) {
+    private void createNewAccount(SignInPage signInPage, String email, String password) {
         signInPage.startAccountCreation(email)
                 .createAccountWithRandomInformation(password);
     }
 
     @Step("Add the first of '{0}' from the search results to the shopping cart")
-    public void addToCartFirstOf(String product) {
+    private void addToCartFirstOf(String product) {
         goToHomePage().addToCartFirstOf(product);
     }
 
     @Step("Proceed to checkout, select the 'Bank Wire' payment option and confirm")
-    public ConfirmOrderPage proceedWithBankWirePaymentAndConfirm() {
+    private ConfirmOrderPage proceedWithBankWirePaymentAndConfirm() {
         return goToHomePage()
                 .goToShoppingCartSummaryPage()
                 .proceedAndGoToAddressPage()
@@ -60,7 +60,7 @@ public class OrderTest extends BaseTest {
     }
 
     @Step("Check the '{0}' order reference in the order history")
-    public void checkOrderInOrderHistory(String orderReference) {
+    private void checkOrderInOrderHistory(String orderReference) {
         goToHomePage()
                 .goToAccountPage()
                 .goToOrderHistoryPage()

@@ -13,7 +13,7 @@ import static com.automationpractice.utils.LocatorRepository.getLocator;
 public class ConfirmOrderPage extends BasePage {
     private final By CONFIRM_ORDER_BUTTON = getLocator("ConfirmOrderPage.ConfirmOrderButton");
     private final By MESSAGE_BOX = getLocator("ConfirmOrderPage.MessageBox");
-    private final By BACK_TO_ORDERS = getLocator("ConfirmOrderPage.BackToOrdersButton");
+    //private final By BACK_TO_ORDERS = getLocator("ConfirmOrderPage.BackToOrdersButton");
 
     public ConfirmOrderPage confirmOrder() {
         $(CONFIRM_ORDER_BUTTON).click();
@@ -28,8 +28,8 @@ public class ConfirmOrderPage extends BasePage {
         return matcher.find() ? matcher.group() : null;
     }
 
-    public OrderHistoryPage goToOrderHistoryPage() {
-        $(BACK_TO_ORDERS).click();
-        return page(OrderHistoryPage.class);
-    }
+//    public OrderHistoryPage goToOrderHistoryPage() {
+//        $(BACK_TO_ORDERS).click();
+//        return page(OrderHistoryPage.class);
+//    }
 }
