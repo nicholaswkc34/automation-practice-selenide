@@ -53,17 +53,29 @@ public class CreateAccountPage extends BasePage {
         return $(STATE_SELECT).$$(By.tagName("option")).get(randomIndex).val();
     }
 
-    public CreateAccountPage setRandomAccountInformation() {
+    public CreateAccountPage setRandomAccountInformation(String password) {
         RandomDataGenerator random = new RandomDataGenerator();
 
         return this.setPersonalInformation(random.newWord(), random.newWord())
-                .setPassword(random.newPassword(5, 15))
+                .setPassword(password)
                 .setAddressInformation(getRandomState(), random.newWord(), random.newWord(), random.newNumber(5))
                 .setPhone(random.newPhone(10));
     }
 
+    public CreateAccountPage setRandomAccountInformation() {
+        RandomDataGenerator random = new RandomDataGenerator();
+
+        return setRandomAccountInformation(random.newPassword(5, 15));
+    }
+
     public AccountPage createAccountWithRandomInformation() {
         setRandomAccountInformation();
+        $(REGISTER_BUTTON).click();
+        return page(AccountPage.class);
+    }
+
+    public AccountPage createAccountWithRandomInformation(String password) {
+        setRandomAccountInformation(password);
         $(REGISTER_BUTTON).click();
         return page(AccountPage.class);
     }
